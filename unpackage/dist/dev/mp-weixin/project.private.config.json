@@ -3,5 +3,6 @@
   "projectname": "jm-supermall",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "condition": {}
 }
