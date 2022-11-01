@@ -144,6 +144,7 @@
     height: 60rpx;
     width: 100%;
     display: flex;
+    margin: 30rpx;
   }
   .floor-img-box {
     display: flex;
