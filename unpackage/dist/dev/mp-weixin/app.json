@@ -9,15 +9,16 @@
     {
       "root": "subpkg",
       "pages": [
-        "goods_detail/goods_detail"
+        "goods_detail/goods_detail",
+        "search/search"
       ]
     }
   ],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "jm-supermall",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarTitleText": "文字",
+    "navigationBarBackgroundColor": "#c00000",
+    "backgroundColor": "#ffffff"
   },
   "tabBar": {
     "selectedColor": "#C00000",

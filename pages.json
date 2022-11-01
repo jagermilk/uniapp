@@ -1,32 +1,31 @@
 {
-  "pages": [{
+  "pages": 
+  [{
     "path": "pages/home/home",
     "style": {
-      "navigationBarTitleText": "首页",
+      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
   }, {
     "path": "pages/cate/cate",
     "style": {
-      "navigationBarTitleText": "分类",
+      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
 
   }, {
     "path": "pages/cart/cart",
     "style": {
-      "navigationBarTitleText": "购物车",
+      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
 
   }, {
     "path": "pages/my/my",
     "style": {
-      "navigationBarTitleText": "我的",
+      "navigationBarTitleText": "",
       "enablePullDownRefresh": false
-    }
-
-  }],
+    }}],
   "subPackages": [
     {
       "root":"subpkg",
@@ -40,6 +39,15 @@
                 
                 }
                 
+                ,{
+                    "path" : "search/search",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
     }
   ],
@@ -73,12 +81,12 @@
       ]
   },
   "globalStyle": {
+    //导航栏文字颜色
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "jm-supermall",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8",
-    "app-plus": {
-      "background": "#efeff4"
-    }
+    //导航栏文字
+    "navigationBarTitleText": "文字",
+    //导航栏背景颜色
+    "navigationBarBackgroundColor": "#c00000",
+    "backgroundColor": "#ffffff"
   }
 }

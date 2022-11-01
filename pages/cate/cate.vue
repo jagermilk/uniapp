@@ -1,5 +1,8 @@
 <template>
   <view>
+    <view class="search-box">
+        <search @click="clicksearch"></search>
+        </view>
     <view class="scroll-view-container">
       <!-- 左侧的滚动视图区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{height: wh + 'px'}">
@@ -46,7 +49,7 @@
     },
     onLoad() {
       const sysInfo = uni.getSystemInfoSync()
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight-50
       this.getCateList()
     },
     methods: {
@@ -73,7 +76,13 @@
          uni.navigateTo({
             url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
           })
-      }
+      },
+      clicksearch(){
+      console.log(111)
+      uni.navigateTo({
+             url: '/subpkg/search/search'
+           })
+    }
     }
   }
 </script>
@@ -150,5 +159,12 @@
         }
       }
     }
+  }
+  .search-box{
+    position: sticky;
+     // 吸顶的“位置”
+      top: 0;
+      // 提高层级，防止被轮播图覆盖
+      z-index: 999;
   }
 </style>
