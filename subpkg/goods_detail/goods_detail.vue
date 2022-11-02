@@ -1,40 +1,46 @@
 <template>
   <view class="goods_detail">
-    
 
-  <view class="goods_detail_container">
-    <!-- 轮播图区域 -->
-    <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
-      <swiper-item v-for="(item, i) in goods_info.pics" :key="i">
-        <image :src="item.pics_big" @click="preview(i)"></image>
-      </swiper-item>
-    </swiper>
-    <!-- 商品信息区域 -->
-    <view class="goods-info-box" v-if="goods_info.goods_name">
-      <!-- 商品价格 -->
-      <view class="price">￥{{goods_info.goods_price}}</view>
-      <!-- 信息主体区域 -->
-      <view class="goods-info-body">
-        <!-- 商品名称 -->
-        <view class="goods-name">{{goods_info.goods_name}}</view>
-        <!-- 收藏 -->
-        <view class="favi">
-          <uni-icons type="star" size="18" color="gray"></uni-icons>
-          <text>收藏</text>
+
+    <view class="goods_detail_container">
+      <!-- 轮播图区域 -->
+      <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
+        <swiper-item v-for="(item, i) in goods_info.pics" :key="i">
+          <image :src="item.pics_big" @click="preview(i)"></image>
+        </swiper-item>
+      </swiper>
+      <!-- 商品信息区域 -->
+      <view class="goods-info-box" v-if="goods_info.goods_name">
+        <!-- 商品价格 -->
+        <view class="price">￥{{goods_info.goods_price}}</view>
+        <!-- 信息主体区域 -->
+        <view class="goods-info-body">
+          <!-- 商品名称 -->
+          <view class="goods-name">{{goods_info.goods_name}}</view>
+          <!-- 收藏 -->
+          <view class="favi">
+            <uni-icons type="star" size="18" color="gray"></uni-icons>
+            <text>收藏</text>
+          </view>
         </view>
+        <!-- 运费 -->
+        <view class="yf">快递：免运费</view>
       </view>
-      <!-- 运费 -->
-      <view class="yf">快递：免运费</view>
+      <!-- 商品详情信息 -->
+      <rich-text :nodes="goods_info.goods_introduce"></rich-text>
     </view>
-    <!-- 商品详情信息 -->
-    <rich-text :nodes="goods_info.goods_introduce"></rich-text>
+    <!-- 导航栏 -->
+    <uni-goods-nav class="goods-nav" :fill="true" :options="options" :buttonGroup="buttonGroup" @click="onClick"
+      @buttonClick="buttonClick" />
   </view>
-  <!-- 导航栏 -->
-  <uni-goods-nav class="goods-nav" :fill="true" :options="options" :buttonGroup="buttonGroup" @click="onClick" @buttonClick="buttonClick" />
-    </view>
 </template>
 
 <script>
+  import {
+    mapGetters,
+    mapMutations,
+    mapState
+  } from 'vuex'
   export default {
     data() {
       return {
@@ -48,13 +54,13 @@
         }, {
           icon: 'shop',
           text: '店铺',
-          info: 2,
+          info: 0,
           infoBackgroundColor: '#007aff',
           infoColor: "white"
         }, {
           icon: 'cart',
           text: '购物车',
-          info: 2
+          info: 0
         }],
         buttonGroup: [{
             text: '加入购物车',
@@ -75,6 +81,31 @@
       // 调用请求商品详情数据的方法
       this.getGoodsDetail(goods_id)
     },
+    onShow() {
+       // 在页面刚展示的时候，设置数字徽标
+       this.setBadge()
+    },
+    computed: {
+      // 调用 mapState 方法，把 m_cart 模块中的 cart 数组映射到当前页面中，作为计算属性来使用
+      // ...mapState('模块的名称', ['要映射的数据名称1', '要映射的数据名称2'])
+      ...mapState('m_cart', ['cart']),
+      ...mapGetters('m_cart', ['total']),
+    },
+    watch: {
+        // 1. 监听 total 值的变化，通过第一个形参得到变化后的新值
+        total:{
+        handler(newVal) {
+          // 2. 通过数组的 find() 方法，找到购物车按钮的配置对象
+          const findResult = this.options.find((x) => x.text === '购物车')
+    
+          if (findResult) {
+            // 3. 动态为购物车按钮的 info 属性赋值
+            findResult.info = newVal
+          }
+        },
+        immediate:true
+        }
+      },
     methods: {
       // 定义请求商品详情数据的方法
       async getGoodsDetail(goods_id) {
@@ -85,7 +116,8 @@
         })
         if (res.meta.status !== 200) return uni.$showMsg()
         // 使用字符串的 replace() 方法，为 img 标签添加行内的 style 样式，从而解决图片底部空白间隙的问题，将 webp 的后缀名替换为 jpg 的后缀名
-        res.message.goods_introduce = res.message.goods_introduce.replace(/<img /g, '<img style="display:block;" ').replace(/webp/g, 'jpg')
+        res.message.goods_introduce = res.message.goods_introduce.replace(/<img /g, '<img style="display:block;" ')
+          .replace(/webp/g, 'jpg')
         // 为 data 中的数据赋值
         this.goods_info = res.message
       },
@@ -96,23 +128,48 @@
         })
       },
       onClick(e) {
-        uni.showToast({
-          title: `点击${e.content.text}`,
-          icon: 'none'
-        })
+        if (e.content.text === '购物车') {
+          // 切换到购物车页面
+          uni.switchTab({
+            url: '/pages/cart/cart'
+          })
+        }
       },
+      ...mapMutations('m_cart', ['addToCart']),
       buttonClick(e) {
-        console.log(e)
-        this.options[2].info++
-      }
+        if (e.content.text === '加入购物车') {
+
+          // 2. 组织一个商品的信息对象
+          const goods = {
+            goods_id: this.goods_info.goods_id, // 商品的Id
+            goods_name: this.goods_info.goods_name, // 商品的名称
+            goods_price: this.goods_info.goods_price, // 商品的价格
+            goods_count: 1, // 商品的数量
+            goods_small_logo: this.goods_info.goods_small_logo, // 商品的图片
+            goods_state: true // 商品的勾选状态
+          }
+
+          // 3. 通过 this 调用映射过来的 addToCart 方法，把商品信息对象存储到购物车中
+          this.addToCart(goods)
+
+        }
+      },
+       setBadge() {
+            // 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标
+            uni.setTabBarBadge({
+               index: 2, // 索引
+               text: this.total + '' // 注意：text 的值必须是字符串，不能是数字
+            })
+         }
     }
   }
 </script>
 
 <style lang="scss">
-  .goods_detail_container{
+  .goods_detail_container {
     padding-bottom: 50px;
   }
+
   swiper {
     height: 450rpx;
 
@@ -162,10 +219,11 @@
       color: gray;
     }
   }
+
   .goods-nav {
-  		position: fixed;
-  		  bottom: 0;
-  		  left: 0;
-  		  width: 100%;
-  	}
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
 </style>
