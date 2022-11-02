@@ -48,6 +48,14 @@
                 }
                 
                 }
+                ,{
+                    "path" : "goods_list/goods_list",
+                    "style" : {
+           "onReachBottomDistance": 150,
+           "enablePullDownRefresh": true
+         }
+                
+                }
             ]
     }
   ],

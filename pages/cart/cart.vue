@@ -1,6 +1,6 @@
 <template>
   <view>
-    
+      我是cart
   </view>
 </template>
 
