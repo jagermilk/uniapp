@@ -17,7 +17,7 @@
   ],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "文字",
+    "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#c00000",
     "backgroundColor": "#ffffff"
   },
@@ -50,6 +50,8 @@
       }
     ]
   },
-  "permission": {},
+  "requiredPrivateInfos": [
+    "chooseAddress"
+  ],
   "usingComponents": {}
 }

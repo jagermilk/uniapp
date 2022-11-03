@@ -1,6 +1,6 @@
 {
-  "onReachBottomDistance": 150,
   "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "usingComponents": {
     "my-goods": "/components/my-goods/my-goods"
   }

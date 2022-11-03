@@ -2538,54 +2538,680 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 100:
-/*!*******************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
-  \*******************************************************************************************************/
+/***/ 105:
+/*!***********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpwxs.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 101));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 102));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 103));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mpMixins = {};
+var is_pc = null;
+
+
+
+
+
+
+
+
+mpMixins = {
+  data: function data() {
+    return {
+      is_show: 'none' };
+
+  },
+  watch: {
+    show: function show(newVal) {
+      this.is_show = this.show;
+    } },
+
+  created: function created() {
+    this.swipeaction = this.getSwipeAction();
+    if (this.swipeaction.children !== undefined) {
+      this.swipeaction.children.push(this);
+    }
+  },
+  mounted: function mounted() {
+    this.is_show = this.show;
+  },
+  methods: {
+    // wxs 中调用
+    closeSwipe: function closeSwipe(e) {
+      if (!this.autoClose) return;
+      this.swipeaction.closeOther(this);
+    },
+
+    change: function change(e) {
+      this.$emit('change', e.open);
+      if (this.is_show !== e.open) {
+        this.is_show = e.open;
+      }
+    },
+
+    appTouchStart: function appTouchStart(e) {
+      if (is_pc) return;var
+
+      clientX =
+      e.changedTouches[0].clientX;
+      this.clientX = clientX;
+      this.timestamp = new Date().getTime();
+    },
+    appTouchEnd: function appTouchEnd(e, index, item, position) {
+      if (is_pc) return;var
+
+      clientX =
+      e.changedTouches[0].clientX;
+      // fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
+      var diff = Math.abs(this.clientX - clientX);
+      var time = new Date().getTime() - this.timestamp;
+      if (diff < 40 && time < 300) {
+        this.$emit('click', {
+          content: item,
+          index: index,
+          position: position });
+
+      }
+    },
+    onClickForPC: function onClickForPC(index, item, position) {
+      if (!is_pc) return;
+
+
+
+
+
+
+
+    } } };var _default =
+
+
+
+
+mpMixins;exports.default = _default;
 
 /***/ }),
 
-/***/ 101:
-/*!******************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
-  \******************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
+/***/ 106:
+/*!**************************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-swipe-action/components/uni-swipe-action-item/bindingx.js ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var bindIngXMixins = {};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bindIngXMixins;exports.default = _default;
 
 /***/ }),
 
-/***/ 102:
-/*!***********************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
-  \***********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
+/***/ 107:
+/*!*************************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpother.js ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var otherMixins = {};var _default =
 
-/***/ }),
 
-/***/ 103:
-/*!***********************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
-  \***********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
 
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+otherMixins;exports.default = _default;
 
 /***/ }),
 
@@ -2814,14 +3440,15 @@ var $http = new Request();exports.$http = $http;
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 14));
-var _cart = _interopRequireDefault(__webpack_require__(/*! ./cart.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // 1. 导入 Vue 和 Vuex
-
+var _cart = _interopRequireDefault(__webpack_require__(/*! ./cart.js */ 15));
+var _address = _interopRequireDefault(__webpack_require__(/*! ./address.js */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // 1. 导入 Vue 和 Vuex
 
 _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   modules: {
-    m_cart: _cart.default } });var _default =
+    m_cart: _cart.default,
+    m_address: _address.default } });var _default =
 
 
 store;exports.default = _default;
@@ -2829,34 +3456,53 @@ store;exports.default = _default;
 /***/ }),
 
 /***/ 131:
-/*!***********************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/mixins/tabbar-badge.js ***!
-  \***********************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/index.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vuex = __webpack_require__(/*! vuex */ 14);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 132));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 133));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 134));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
-  computed: _objectSpread({},
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default };exports.default = _default;
 
-  (0, _vuex.mapGetters)('m_cart', ['total'])),
+/***/ }),
 
-  onShow: function onShow() {
-    // 在页面刚展示的时候，设置数字徽标
-    this.setBadge();
-  },
-  methods: {
-    setBadge: function setBadge() {
-      // 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标
-      uni.setTabBarBadge({
-        index: 2, // 索引
-        text: this.total + '' // 注意：text 的值必须是字符串，不能是数字
-      });
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+/***/ 132:
+/*!****************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/en.json ***!
+  \****************************************************************************************************/
+/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"shop\",\"uni-goods-nav.options.cart\":\"cart\",\"uni-goods-nav.buttonGroup.addToCart\":\"add to cart\",\"uni-goods-nav.buttonGroup.buyNow\":\"buy now\"}");
+
+/***/ }),
+
+/***/ 133:
+/*!*********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hans.json ***!
+  \*********************************************************************************************************/
+/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店铺\",\"uni-goods-nav.options.cart\":\"购物车\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入购物车\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即购买\"}");
+
+/***/ }),
+
+/***/ 134:
+/*!*********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hant.json ***!
+  \*********************************************************************************************************/
+/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-goods-nav.options.cart\":\"購物車\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入購物車\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即購買\"}");
 
 /***/ }),
 
@@ -4117,6 +4763,57 @@ module.exports = index_cjs;
 
 /***/ }),
 
+/***/ 142:
+/*!*******************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 143));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 144));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 145));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default };exports.default = _default;
+
+/***/ }),
+
+/***/ 143:
+/*!******************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
+  \******************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 144:
+/*!***********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
+  \***********************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 145:
+/*!***********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
+  \***********************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+/***/ }),
+
 /***/ 15:
 /*!**************************************************!*\
   !*** /Users/xuraodan/jm-supermall/store/cart.js ***!
@@ -4147,7 +4844,6 @@ module.exports = index_cjs;
         // 如果购物车中没有这件商品，则直接 push
         state.cart.push(goods);
       } else {
-
         // 如果购物车中有这件商品，则只更新数量即可
         findResult.goods_count++;
       }
@@ -4156,7 +4852,47 @@ module.exports = index_cjs;
     // 将购物车中的数据持久化存储到本地
     saveToStorage: function saveToStorage(state) {
       uni.setStorageSync('cart', JSON.stringify(state.cart));
+    },
+    // 更新购物车中商品的勾选状态
+    updateGoodsState: function updateGoodsState(state, goods) {
+      // 根据 goods_id 查询购物车中对应商品的信息对象
+      var findResult = state.cart.find(function (x) {return x.goods_id === goods.goods_id;});
+
+      // 有对应的商品信息对象
+      if (findResult) {
+        // 更新对应商品的勾选状态
+        findResult.goods_state = goods.goods_state;
+        // 持久化存储到本地
+        this.commit('m_cart/saveToStorage');
+      }
+    },
+    updateGoodsCount: function updateGoodsCount(state, goods) {
+      // 根据 goods_id 查询购物车中对应商品的信息对象
+      var findResult = state.cart.find(function (x) {return x.goods_id === goods.goods_id;});
+
+      if (findResult) {
+        // 更新对应商品的数量
+        findResult.goods_count = goods.goods_count;
+        console.log(findResult);
+        // 持久化存储到本地
+        this.commit('m_cart/saveToStorage');
+      }
+    },
+    // 根据 Id 从购物车中删除对应的商品信息
+    removeGoodsById: function removeGoodsById(state, goods_id) {
+      // 调用数组的 filter 方法进行过滤
+      state.cart = state.cart.filter(function (x) {return x.goods_id !== goods_id;});
+      // 持久化存储到本地
+      this.commit('m_cart/saveToStorage');
+    },
+    // 更新所有商品的勾选状态
+    updateAllGoodsState: function updateAllGoodsState(state, newState) {
+      // 循环更新购物车中每件商品的勾选状态
+      state.cart.forEach(function (x) {return x.goods_state = newState;});
+      // 持久化存储到本地
+      this.commit('m_cart/saveToStorage');
     } },
+
 
 
   // 模块的 getters 属性
@@ -4166,6 +4902,66 @@ module.exports = index_cjs;
       // 循环统计商品的数量，累加到变量 c 中
       state.cart.forEach(function (goods) {return c += goods.goods_count;});
       return c;
+    },
+    // 勾选的商品的总数量
+    checkedCount: function checkedCount(state) {
+      // 先使用 filter 方法，从购物车中过滤器已勾选的商品
+      // 再使用 reduce 方法，将已勾选的商品总数量进行累加
+      // reduce() 的返回值就是已勾选的商品的总数量
+      return state.cart.filter(function (x) {return x.goods_state;}).reduce(function (total, item) {return total += item.goods_count;}, 0);
+    },
+    // 已勾选的商品的总价
+    checkedGoodsAmount: function checkedGoodsAmount(state) {
+      // 先使用 filter 方法，从购物车中过滤器已勾选的商品
+      // 再使用 reduce 方法，将已勾选的商品数量 * 单价之后，进行累加
+      // reduce() 的返回值就是已勾选的商品的总价
+      // 最后调用 toFixed(2) 方法，保留两位小数
+      return state.cart.filter(function (x) {return x.goods_state;}).
+      reduce(function (total, item) {return total += item.goods_count * item.goods_price;}, 0).
+      toFixed(2);
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 16:
+/*!*****************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/store/address.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  // 开启命名空间
+  namespaced: true,
+
+  // state 数据
+  state: function state() {return {
+      // 收货地址
+      alladdress: JSON.parse(uni.getStorageSync('cart') || '{}') };},
+
+
+  // 方法
+  mutations: {
+    // 更新收货地址
+    updateAddress: function updateAddress(state, address) {
+      state.alladdress = address;
+      this.commit('m_address/saveAddressToStorage');
+    },
+    // 1. 定义将 address 持久化存储到本地 mutations 方法
+    saveAddressToStorage: function saveAddressToStorage(state) {
+      uni.setStorageSync('address', JSON.stringify(state.alladdress));
+    } },
+
+
+  // 数据包装器
+  getters: {
+    // 收货详细地址的计算属性
+    addstr: function addstr(state) {
+      if (!state.alladdress.provinceName) return '';
+      // 拼接 省，市，区，详细地址 的字符串并返回给用户
+      return state.alladdress.provinceName + state.alladdress.cityName + state.alladdress.countyName + state.alladdress.detailInfo;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
@@ -4202,18 +4998,18 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 22:
+/***/ 23:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 23);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 24);
 
 /***/ }),
 
-/***/ 23:
+/***/ 24:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -4244,7 +5040,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 24);
+module.exports = __webpack_require__(/*! ./runtime */ 25);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -4261,7 +5057,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 24:
+/***/ 25:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -11511,6 +12307,45 @@ internalMixin(Vue);
 
 /***/ }),
 
+/***/ 42:
+/*!***********************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/mixins/tabbar-badge.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vuex = __webpack_require__(/*! vuex */ 14);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
+{
+  computed: _objectSpread({},
+
+  (0, _vuex.mapGetters)('m_cart', ['total'])),
+
+  watch: {
+    // 监听 total 值的变化
+    total: function total() {
+      // 调用 methods 中的 setBadge 方法，重新为 tabBar 的数字徽章赋值
+      this.setBadge();
+    } },
+
+  onShow: function onShow() {
+    // 在页面刚展示的时候，设置数字徽标
+    this.setBadge();
+  },
+  methods: {
+    setBadge: function setBadge() {
+      // 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标
+      uni.setTabBarBadge({
+        index: 2, // 索引
+        text: this.total + '' // 注意：text 的值必须是字符串，不能是数字
+      });
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
 /***/ 5:
 /*!***********************************************!*\
   !*** /Users/xuraodan/jm-supermall/pages.json ***!
@@ -11522,7 +12357,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 81:
+/***/ 92:
 /*!****************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \****************************************************************************************/
@@ -12696,57 +13531,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     "font_class": "cart",
     "unicode": "e631",
     "unicode_decimal": 58929 }] };exports.default = _default;
-
-/***/ }),
-
-/***/ 89:
-/*!*****************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/index.js ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 90));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 91));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 92));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default };exports.default = _default;
-
-/***/ }),
-
-/***/ 90:
-/*!****************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/en.json ***!
-  \****************************************************************************************************/
-/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"shop\",\"uni-goods-nav.options.cart\":\"cart\",\"uni-goods-nav.buttonGroup.addToCart\":\"add to cart\",\"uni-goods-nav.buttonGroup.buyNow\":\"buy now\"}");
-
-/***/ }),
-
-/***/ 91:
-/*!*********************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hans.json ***!
-  \*********************************************************************************************************/
-/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店铺\",\"uni-goods-nav.options.cart\":\"购物车\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入购物车\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即购买\"}");
-
-/***/ }),
-
-/***/ 92:
-/*!*********************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hant.json ***!
-  \*********************************************************************************************************/
-/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-goods-nav.options.cart\":\"購物車\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入購物車\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即購買\"}");
 
 /***/ })
 

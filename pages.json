@@ -1,6 +1,5 @@
 {
-  "pages": 
-  [{
+  "pages": [{
     "path": "pages/home/home",
     "style": {
       "navigationBarTitleText": "",
@@ -16,8 +15,8 @@
   }, {
     "path": "pages/cart/cart",
     "style": {
-      "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "navigationBarTitleText": ""
     }
 
   }, {
@@ -25,76 +24,75 @@
     "style": {
       "navigationBarTitleText": "",
       "enablePullDownRefresh": false
-    }}],
-  "subPackages": [
-    {
-      "root":"subpkg",
-      "pages": [{
-                    "path" : "goods_detail/goods_detail",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                
-                ,{
-                    "path" : "search/search",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "goods_list/goods_list",
-                    "style" : {
-           "onReachBottomDistance": 150,
-           "enablePullDownRefresh": true
-         }
-                
-                }
-            ]
     }
-  ],
-    "tabBar":{
-      "selectedColor": "#C00000",
-      "list": [
-        {
-          "pagePath": "pages/home/home",
-          "text": "首页",
-          "iconPath": "static/tab_icons/home.png",
-          "selectedIconPath": "static/tab_icons/home-active.png"
-        },
-        {
-          "pagePath": "pages/cate/cate",
-          "text": "分类",
-          "iconPath": "static/tab_icons/cate.png",
-          "selectedIconPath": "static/tab_icons/cate-active.png"
-        },
-        {
-          "pagePath": "pages/cart/cart",
-          "text": "购物车",
-          "iconPath": "static/tab_icons/cate.png",
-          "selectedIconPath": "static/tab_icons/cate-active.png"
-        },
-        {
-          "pagePath": "pages/my/my",
-          "text": "我的",
-          "iconPath": "static/tab_icons/my.png",
-          "selectedIconPath": "static/tab_icons/my-active.png"
+  }],
+  "subPackages": [{
+    "root": "subpkg",
+    "pages": [{
+        "path": "goods_detail/goods_detail",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
         }
-      ]
+
+      }
+
+      , {
+        "path": "search/search",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
+        }
+
+      }, {
+        "path": "goods_list/goods_list",
+        "style": {
+          "enablePullDownRefresh": true,
+          "onReachBottomDistance":50
+        }
+
+      }
+    ]
+  }],
+  "tabBar": {
+    "selectedColor": "#C00000",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "static/tab_icons/home.png",
+        "selectedIconPath": "static/tab_icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/cate/cate",
+        "text": "分类",
+        "iconPath": "static/tab_icons/cate.png",
+        "selectedIconPath": "static/tab_icons/cate-active.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "static/tab_icons/cate.png",
+        "selectedIconPath": "static/tab_icons/cate-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/tab_icons/my.png",
+        "selectedIconPath": "static/tab_icons/my-active.png"
+      }
+    ]
   },
   "globalStyle": {
     //导航栏文字颜色
     "navigationBarTextStyle": "white",
     //导航栏文字
-    "navigationBarTitleText": "文字",
+    "navigationBarTitleText": "",
     //导航栏背景颜色
     "navigationBarBackgroundColor": "#c00000",
-    "backgroundColor": "#ffffff"
+    "backgroundColor": "#ffffff",
+    "app-plus": {
+    			"bounce": "none"
+    		}
+
   }
 }
