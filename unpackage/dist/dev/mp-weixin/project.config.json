@@ -18,7 +18,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.27.0",
+  "libVersion": "",
   "appid": "wx1690be67d3ffe713",
   "projectname": "jm-supermall",
   "condition": {
