@@ -75,7 +75,7 @@
         // 3.3 如果用户点击了 “取消” 按钮，则提示用户 “您取消了地址授权！”
         if (confirmResult.cancel) return uni.$showMsg('您取消了地址授权！')
       
-        // 3.4 如果用户点击了 “确认” 按钮，则调用 uni.openSetting() 方法进入授权页面，让用户重新进行授权
+        // 3.4 如果用户点击了 “确认” 按钮，则调用 uni.openSetting() 方法进入授权页面，让重新进行授权
         if (confirmResult.confirm) return uni.openSetting({
           // 3.4.1 授权结束，需要对授权的结果做进一步判断
           success: (settingResult) => {
