@@ -49,20 +49,16 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        /* 小程序特有相关 */
         "appid" : "wx1690be67d3ffe713",
         "setting" : {
             "urlCheck" : false
         },
         "usingComponents" : true,
-        "requiredPrivateInfos": [
-        
-                     //"getFuzzyLocation",
-                     //"choosePoi",
-        
-                    "chooseAddress"
-        
-                ]
+        "requiredPrivateInfos" : [
+            //"getFuzzyLocation",
+            //"choosePoi",
+            "chooseAddress"
+        ]
     },
     "vueVersion" : "2"
 }

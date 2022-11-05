@@ -2538,7 +2538,7 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 104:
+/***/ 108:
 /*!****************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \****************************************************************************************/
@@ -3844,7 +3844,92 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 117:
+/***/ 12:
+/*!*******************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/node_modules/@escook/request-miniprogram/miniprogram_dist/index.js ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.$http = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var Request = /*#__PURE__*/function () {
+  function Request() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};_classCallCheck(this, Request);
+    // 请求的根路径
+    this.baseUrl = options.baseUrl || '';
+    // 请求的 url 地址
+    this.url = options.url || '';
+    // 请求方式
+    this.method = 'GET';
+    // 请求的参数对象
+    this.data = null;
+    // header 请求头
+    this.header = options.header || {};
+    this.beforeRequest = null;
+    this.afterRequest = null;
+  }_createClass(Request, [{ key: "get", value: function get(
+
+    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      this.method = 'GET';
+      this.url = this.baseUrl + url;
+      this.data = data;
+      return this._();
+    } }, { key: "post", value: function post(
+
+    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      this.method = 'POST';
+      this.url = this.baseUrl + url;
+      this.data = data;
+      return this._();
+    } }, { key: "put", value: function put(
+
+    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      this.method = 'PUT';
+      this.url = this.baseUrl + url;
+      this.data = data;
+      return this._();
+    } }, { key: "delete", value: function _delete(
+
+    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      this.method = 'DELETE';
+      this.url = this.baseUrl + url;
+      this.data = data;
+      return this._();
+    } }, { key: "_", value: function _()
+
+    {var _this = this;
+      // 清空 header 对象
+      this.header = {};
+      // 请求之前做一些事
+      this.beforeRequest && typeof this.beforeRequest === 'function' && this.beforeRequest(this);
+      // 发起请求
+      return new Promise(function (resolve, reject) {
+        var weixin = wx;
+        // 适配 uniapp
+        if ('undefined' !== typeof uni) {
+          weixin = uni;
+        }
+        weixin.request({
+          url: _this.url,
+          method: _this.method,
+          data: _this.data,
+          header: _this.header,
+          success: function success(res) {resolve(res);},
+          fail: function fail(err) {reject(err);},
+          complete: function complete(res) {
+            // 请求完成以后做一些事情
+            _this.afterRequest && typeof _this.afterRequest === 'function' && _this.afterRequest(res);
+          } });
+
+      });
+    } }]);return Request;}();
+
+
+var $http = new Request();exports.$http = $http;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 121:
 /*!***********************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpwxs.js ***!
   \***********************************************************************************************************/
@@ -3938,7 +4023,7 @@ mpMixins;exports.default = _default;
 
 /***/ }),
 
-/***/ 118:
+/***/ 122:
 /*!**************************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-swipe-action/components/uni-swipe-action-item/bindingx.js ***!
   \**************************************************************************************************************/
@@ -4251,7 +4336,7 @@ bindIngXMixins;exports.default = _default;
 
 /***/ }),
 
-/***/ 119:
+/***/ 123:
 /*!*************************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpother.js ***!
   \*************************************************************************************************************/
@@ -4518,91 +4603,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 otherMixins;exports.default = _default;
-
-/***/ }),
-
-/***/ 12:
-/*!*******************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/node_modules/@escook/request-miniprogram/miniprogram_dist/index.js ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.$http = void 0;function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var Request = /*#__PURE__*/function () {
-  function Request() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};_classCallCheck(this, Request);
-    // 请求的根路径
-    this.baseUrl = options.baseUrl || '';
-    // 请求的 url 地址
-    this.url = options.url || '';
-    // 请求方式
-    this.method = 'GET';
-    // 请求的参数对象
-    this.data = null;
-    // header 请求头
-    this.header = options.header || {};
-    this.beforeRequest = null;
-    this.afterRequest = null;
-  }_createClass(Request, [{ key: "get", value: function get(
-
-    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      this.method = 'GET';
-      this.url = this.baseUrl + url;
-      this.data = data;
-      return this._();
-    } }, { key: "post", value: function post(
-
-    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      this.method = 'POST';
-      this.url = this.baseUrl + url;
-      this.data = data;
-      return this._();
-    } }, { key: "put", value: function put(
-
-    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      this.method = 'PUT';
-      this.url = this.baseUrl + url;
-      this.data = data;
-      return this._();
-    } }, { key: "delete", value: function _delete(
-
-    url) {var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      this.method = 'DELETE';
-      this.url = this.baseUrl + url;
-      this.data = data;
-      return this._();
-    } }, { key: "_", value: function _()
-
-    {var _this = this;
-      // 清空 header 对象
-      this.header = {};
-      // 请求之前做一些事
-      this.beforeRequest && typeof this.beforeRequest === 'function' && this.beforeRequest(this);
-      // 发起请求
-      return new Promise(function (resolve, reject) {
-        var weixin = wx;
-        // 适配 uniapp
-        if ('undefined' !== typeof uni) {
-          weixin = uni;
-        }
-        weixin.request({
-          url: _this.url,
-          method: _this.method,
-          data: _this.data,
-          header: _this.header,
-          success: function success(res) {resolve(res);},
-          fail: function fail(err) {reject(err);},
-          complete: function complete(res) {
-            // 请求完成以后做一些事情
-            _this.afterRequest && typeof _this.afterRequest === 'function' && _this.afterRequest(res);
-          } });
-
-      });
-    } }]);return Request;}();
-
-
-var $http = new Request();exports.$http = $http;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -5889,7 +5889,7 @@ module.exports = index_cjs;
 
 /***/ }),
 
-/***/ 143:
+/***/ 147:
 /*!*****************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/index.js ***!
   \*****************************************************************************************************/
@@ -5897,9 +5897,9 @@ module.exports = index_cjs;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 144));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 145));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 146));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 148));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 149));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 150));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -5907,7 +5907,7 @@ var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1
 
 /***/ }),
 
-/***/ 144:
+/***/ 148:
 /*!****************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/en.json ***!
   \****************************************************************************************************/
@@ -5918,7 +5918,7 @@ module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"shop\",\"uni-good
 
 /***/ }),
 
-/***/ 145:
+/***/ 149:
 /*!*********************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hans.json ***!
   \*********************************************************************************************************/
@@ -5926,17 +5926,6 @@ module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"shop\",\"uni-good
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店铺\",\"uni-goods-nav.options.cart\":\"购物车\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入购物车\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即购买\"}");
-
-/***/ }),
-
-/***/ 146:
-/*!*********************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hant.json ***!
-  \*********************************************************************************************************/
-/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-goods-nav.options.cart\":\"購物車\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入購物車\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即購買\"}");
 
 /***/ }),
 
@@ -6050,7 +6039,18 @@ module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-go
 
 /***/ }),
 
-/***/ 154:
+/***/ 150:
+/*!*********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hant.json ***!
+  \*********************************************************************************************************/
+/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-goods-nav.options.cart\":\"購物車\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入購物車\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即購買\"}");
+
+/***/ }),
+
+/***/ 158:
 /*!*******************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \*******************************************************************************************************/
@@ -6058,9 +6058,9 @@ module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-go
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 155));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 156));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 157));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 159));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 160));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 161));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -6068,7 +6068,7 @@ var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1
 
 /***/ }),
 
-/***/ 155:
+/***/ 159:
 /*!******************************************************************************************************!*\
   !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \******************************************************************************************************/
@@ -6076,28 +6076,6 @@ var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
-
-/***/ }),
-
-/***/ 156:
-/*!***********************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
-  \***********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
-
-/***/ }),
-
-/***/ 157:
-/*!***********************************************************************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
-  \***********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
 
@@ -6177,6 +6155,28 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
+/***/ 160:
+/*!***********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
+  \***********************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 161:
+/*!***********************************************************************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
+  \***********************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+/***/ }),
+
 /***/ 2:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -6208,14 +6208,42 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 29:
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
+/***/ 23:
+/*!***********************************************************!*\
+  !*** /Users/xuraodan/jm-supermall/mixins/tabbar-badge.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 30);
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vuex = __webpack_require__(/*! vuex */ 14);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
+{
+  computed: _objectSpread({},
+
+  (0, _vuex.mapGetters)('m_cart', ['total'])),
+
+  watch: {
+    // 监听 total 值的变化
+    total: function total() {
+      // 调用 methods 中的 setBadge 方法，重新为 tabBar 的数字徽章赋值
+      this.setBadge();
+    } },
+
+  onShow: function onShow() {
+    // 在页面刚展示的时候，设置数字徽标
+    this.setBadge();
+  },
+  methods: {
+    setBadge: function setBadge() {
+      // 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标
+      uni.setTabBarBadge({
+        index: 2, // 索引
+        text: this.total + '' // 注意：text 的值必须是字符串，不能是数字
+      });
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -6683,7 +6711,18 @@ function resolveLocaleChain(locale) {
 
 /***/ }),
 
-/***/ 30:
+/***/ 32:
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ 33);
+
+/***/ }),
+
+/***/ 33:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -6714,7 +6753,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 31);
+module.exports = __webpack_require__(/*! ./runtime */ 34);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -6731,7 +6770,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 31:
+/***/ 34:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -13514,45 +13553,6 @@ internalMixin(Vue);
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 2)))
-
-/***/ }),
-
-/***/ 48:
-/*!***********************************************************!*\
-  !*** /Users/xuraodan/jm-supermall/mixins/tabbar-badge.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vuex = __webpack_require__(/*! vuex */ 14);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-
-
-{
-  computed: _objectSpread({},
-
-  (0, _vuex.mapGetters)('m_cart', ['total'])),
-
-  watch: {
-    // 监听 total 值的变化
-    total: function total() {
-      // 调用 methods 中的 setBadge 方法，重新为 tabBar 的数字徽章赋值
-      this.setBadge();
-    } },
-
-  onShow: function onShow() {
-    // 在页面刚展示的时候，设置数字徽标
-    this.setBadge();
-  },
-  methods: {
-    setBadge: function setBadge() {
-      // 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标
-      uni.setTabBarBadge({
-        index: 2, // 索引
-        text: this.total + '' // 注意：text 的值必须是字符串，不能是数字
-      });
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

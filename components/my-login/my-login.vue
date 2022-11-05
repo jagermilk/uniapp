@@ -72,7 +72,7 @@
         // const { data: loginResult } = await uni.$http.post('/api/public/v1/users/wxlogin', query)
         // console.log(loginResult)
         // if (loginResult.meta.status !== 200) return uni.$showMsg('登录失败！')
-        this.updateToken('123214343')
+        this.updateToken('Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIzLCJpYXQiOjE1NjQ3MzAwNzksImV4cCI6MTAwMTU2NDczMDA3OH0.YPt-XeLnjV-_1ITaXGY2FhxmCe4NvXuRnRB8OMCfnPo')
         uni.$showMsg('登录成功')
         this.navigateBack()
       },
